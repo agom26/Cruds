@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StorePostPost;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -36,10 +37,20 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePostPost $request)
     {
-        echo "ya llegue tengo asistencia Ana Gabriela Ovalle Motta";
-        //
+        /* Antes de guardar en la base de datos ver que si se mandan los mensajes */
+        
+        echo"El titulo trae ".$request->title;
+
+        Post::create($request->validated());
+        /* Refrescar la pagina */
+        //return back();
+        return redirect('post/create')->with('status','Muchas gracias el post fue creado con éxito');
+        /* Request hacia un objeto
+            cuando se trabaja con dolar se hace alusion a un metodo
+            sin dolar se hace alusion a un nombre
+            el title se saco de create.blade en name='title del input'*/
     }
 
     /**
@@ -73,7 +84,7 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        echo view ('dashboard.post.update');
     }
 
     /**

@@ -1,0 +1,22 @@
+h1,label,p{
+    text-align: center;
+    color:#fbe9e7;
+}
+
+
+
+*{
+    background-image: url(https://fondosmil.com/fondo/27139.jpg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.margen{
+    
+    text-align: center;
+}
+
+.footer{
+    margin-top: 25%;
+}
