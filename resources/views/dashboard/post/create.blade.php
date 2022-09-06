@@ -13,55 +13,45 @@
     
 </head>
 <body>
+    {{-- 5/09 --}}
+    {{-- mando a llamar el nav bar --}}
+    @include('dashboard.partials.nav-header-main')
     <h1>Ingreso de Post</h1><br><br>
 
     <!-- Si hay cualquier tipo de error se generara algo -->
-    <!-- @if ($errors->any())
-        @foreach ($errors->all() as $error)
-            <div class="alert alert-danger" role="alert">{{$error}}</div>
-        @endforeach
-    @endif -->
+  
     <!-- Siempre colocar el endif -->
 
     <main>
         <div class="container">
         <form action="{{route('post.store')}}" method="post">
 
-            @csrf
-
-            @if(session('status'))
-            <div class="alert alert-success">
-                {{session('status')}}
-            </div>
-            @endif
+            {{-- 5/09 mando a llamar la sesion flash --}}
+            @include('dashboard.partials.sesion-flash-status')
 
             <section class="margen">
                 <label for="" >Titulo</label>
-                <input type="text" name="title" >
+                <input type="text" name="title" value="{{old('title')}}">
                 @error('title')
                     <small class="text-light">{{ $message }}</small>
                 @enderror
                  <br><br>
                 
                 <label for="" >Url Corta</label>
-                <input type="text" name="slug" class="">
+                <input type="text" name="slug" class="" value="{{old('slug')}}">
                 @error('slug')
                     <small class="text-light">{{ $message }}</small>
                 @enderror
                 <br><br>
                 
                 <label for="" >Contenido</label>
-                <textarea name="content" id="" class=""></textarea>
+                <textarea name="content" id="" >{{old('content')}}</textarea>
                 @error('content')
                     <small class="text-light">{{ $message }}</small>
                 @enderror
                 <br><br>
 
-                <label for="" >Descripcion</label>
-                <textarea name="description" id="" class=""></textarea>
-                @error('description')
-                    <small class="text-light">{{ $message }}</small>
-                @enderror
+                
                 <br><br>
                 
                 <button type="" >Enviar</button>

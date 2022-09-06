@@ -13,7 +13,7 @@
     <title>Categorias</title>
 </head>
 <body>
-    
+    @include('dashboard.partials.nav-header-main')
     <h1>Ingreso de Categorias</h1><br><br>
 
     <!-- Si hay cualquier tipo de error se generara algo -->

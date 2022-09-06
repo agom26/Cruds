@@ -16,8 +16,15 @@ class PostController extends Controller
      */
     public function index()
     {
+        /* Post se cambia al modelo que se quiere modificar, en categorias seria Categories y
+        $categories */
+        $posts=Post::orderBy('created_at','desc')->cursorpaginate(5);
         
-        //
+        
+        /* Es flecha porque es un signo igual en los arreglos, no es flecha de una linea */
+        echo view ('dashboard.post.index',['posts'=> $posts]);
+        
+        
     }
 
     /**
@@ -61,7 +68,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        echo view ('dashboard.post.show',["post"=>$post]);
     }
 
     /**

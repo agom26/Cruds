@@ -1,7 +1,6 @@
 h1,label,p{
     text-align: center;
     color:black;
-    background-color: #ede7f6;
 }
 
 
@@ -11,13 +10,11 @@ h1,label,p{
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-attachment: fixed; */
-    background-color: #ede7f6;
     color:black;
 }
 
 .margen{
     
-    background-color: #ede7f6;
     color:black;
 }
 

@@ -14,9 +14,10 @@ use App\Http\Controllers\Dashboard\CategoriesController;
 |
 */
 
+/* 5/09 */
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 route::resource('post',PostController::class);
 
