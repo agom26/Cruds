@@ -28,7 +28,9 @@ class StorePostPost extends FormRequest
             ///* validaciones */
             'title'=>'required|min:5|Max:500',
             'slug'=>'required|min:5|Max:500',
+            'description'=>'required|min:5',
             'content'=>'required|min:5',
+            
         ];
     }
 }

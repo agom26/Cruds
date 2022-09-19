@@ -28,33 +28,7 @@
         <div class="container">
         <form action="{{route('categories.store')}}" method="post">
 
-            @csrf
-
-            @if(session('status'))
-            <div class="alert alert-success">
-                {{session('status')}}
-            </div>
-            @endif
-
-            <section class="margen">
-                <label for="" >Titulo</label>
-                <input type="text" name="title" >
-                @error('title')
-                    <small class="text-light">{{ $message }}</small>
-                @enderror
-                 <br><br>
-                
-                <label for="" >Url Corta</label>
-                <input type="text" name="slug" class="">
-                @error('slug')
-                    <small class="text-light">{{ $message }}</small>
-                @enderror
-                <br><br>
-                
-               
-                
-                <button type="" >Enviar</button>
-            </section>
+            @include('dashboard.partials._formC')
         </form>
         </div>
         

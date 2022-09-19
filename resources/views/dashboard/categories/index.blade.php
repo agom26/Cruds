@@ -57,37 +57,43 @@
 
                     {{-- recorrer arreglo --}}
                     {{-- la variable posts que se manda aqui se va a llamar post --}}
-                    @foreach ($posts as $post)
+                    @foreach ($categories as $category)
                         <tr>
                             <td>
-                                {{$post->id}}
+                                {{$category->id}}
                             </td>
                         
                             <td>
-                                {{$post->title}}
+                                {{$category->title}}
                             </td>
                         
                             <td>
-                                {{$post->slug}}
+                                {{$category->slug}}
                             </td>
                         
                             <td>
-                                {{$post->created_at->format('d-m-Y')}}
+                                {{$category->created_at->format('d-m-Y')}}
                             </td>
                         
                             <td>
-                                {{$post->updated_at-> format('d-m-Y')}}
+                                {{$category->updated_at-> format('d-m-Y')}}
                             </td>
                             
                             <td>
-                                <a href="{{route('post.show')}}" class="btn btn-primary"> Ver</a>
+                                <a href="{{route('categories.show',$category->id)}}" class="btn btn-primary">Ver</a>
+                                <a href="{{route('categories.edit',$category->id)}}" class="btn btn-secondary">Actualizar</a>
+                                <form action="{{route('categories.destroy',$category->id)}}" method="POST">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button class="btn btn-danger" type="submit">Borrar</button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach
                         
 
                 </Thead>
-                {{$post->links()}}
+               {{$categories->links()}}
             </table>
 
             

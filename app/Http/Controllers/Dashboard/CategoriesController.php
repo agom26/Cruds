@@ -15,8 +15,8 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        $categories=Categories::orderBy('created_at','desc')->cursorpaginate(5);
-        echo view ('dashboard.categories.index',['posts'=> $categories]);
+        $category=Categories::orderBy('created_at','desc')->cursorpaginate(5);
+        echo view ('dashboard.categories.index',['categories'=> $category]);
     }
 
     /**
@@ -26,7 +26,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        echo view ('dashboard.categories.create');
+        echo view ('dashboard.categories.create',["category"=> new categories()]);
         //
     }
 
@@ -38,7 +38,7 @@ class CategoriesController extends Controller
      */
     public function store(StoreCategoriesPost $request)
     {
-        echo"El titulo trae ".$request->title;
+        echo"La categoria trae ".$request->title;
         Categories::create($request->validated());
         return redirect('categories/create')->with('status','Muchas gracias la categoria fue creada con éxito');
         //
@@ -50,9 +50,9 @@ class CategoriesController extends Controller
      * @param  \App\Models\Categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function show(Categories $categories)
+    public function show(Categories $category)
     {
-        //
+        echo view ('dashboard.categories.show',["category"=>$category]);
     }
 
     /**
@@ -61,9 +61,9 @@ class CategoriesController extends Controller
      * @param  \App\Models\Categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function edit(Categories $categories)
+    public function edit(Categories $category)
     {
-        //
+        echo view ('dashboard.categories.edit',["category"=>$category]);
     }
 
     /**
@@ -73,9 +73,10 @@ class CategoriesController extends Controller
      * @param  \App\Models\Categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Categories $categories)
+    public function update(StoreCategoriesPost $request, Categories $category)
     {
-        //
+        $category->update($request->validated());
+        return back()->with('status','Muchas gracias tu categoria fue actualizada con éxito');
     }
 
     /**
@@ -84,8 +85,9 @@ class CategoriesController extends Controller
      * @param  \App\Models\Categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Categories $categories)
+    public function destroy(Categories $category)
     {
-        //
+        $category->delete();
+        return back()->with('status','Categoria borrada');
     }
 }

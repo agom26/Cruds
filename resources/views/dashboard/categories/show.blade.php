@@ -15,7 +15,7 @@
     {{-- 5/09 --}}
     {{-- mando a llamar el nav bar --}}
     @include('dashboard.partials.nav-header-main')
-    <h1>Ingreso de Post</h1><br><br>
+    <h1>Ingreso de Categoria</h1><br><br>
 
     <!-- Si hay cualquier tipo de error se generara algo -->
   
@@ -25,42 +25,30 @@
         <div class="container">
             <div class="card">
                 <div class="card-header">
-                  <h2>Ver post</h2>
+                  <h2>Ver Categoria</h2>
                 </div>
                 <div class="card-body">
-                    <form action="{{route('post.store')}}" method="post">
+                    <form action="{{route('categories.store')}}" method="post">
 
-            
                         @csrf
             
                         <section class="margen">
                             <label for="" class="form-label">Titulo</label>
-                            <input type="text" name="title" class="form-control" value="{{$post->title}} readonly">
+                            <input type="text" name="title" class="form-control" value="{{$category->title}}">
                             @error('title')
                                 <small class="text-light">{{ $message }}</small>
                             @enderror
                             <br>
                             
                             <label for=""class="form-label" >Url Corta</label>
-                            <input type="text" name="slug" class="form-control"value="{{$post->slug}}">
+                            <input type="text" name="slug" class="form-control"value="{{$category->slug}}">
                             @error('slug')
                                 <small class="text-light">{{ $message }}</small>
                             @enderror
                             <br>
-                            
-                            <label for="" class="form-label">Contenido</label>
-                            <textarea name="content" class="form-control" >{{$post->content}}</textarea>
-                            @error('content')
-                                <small class="text-light">{{ $message }}</small>
-                            @enderror
-                            <br>
-            
-                            
-                            
-                            
                         </section>
                     </form>
-                  <a href="{{route('post.index')}}" class="btn btn-info">Regresar</a>
+                  <a href="{{route('categories.index')}}" class="btn btn-info">Regresar</a>
                 </div>
               </div>
         </div>
